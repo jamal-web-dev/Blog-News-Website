@@ -21,6 +21,7 @@ header{
   align-items: center;
   padding-block: 20px;
   position: relative;
+  background-color: black;
   z-index: 99;
 }
 .logo{
@@ -28,7 +29,7 @@ header{
   font-size: 40px;
   color: white;
   span{
-    color: orangered;
+    color: blue;
   }
 }
 nav ul{
@@ -40,6 +41,20 @@ ul a{
   color: white;
   text-decoration: none;
   font-size: 17px;
+  position: relative;
+}
+ul a::before{
+  position: absolute;
+  content: '';
+  width: 0%;
+  height: 2px;
+  background-color: white;
+  bottom: -4px;;
+  left: 0;
+  transition: 0.4s;
+}
+ul a:hover::before{
+  width: 100%;
 }
 
 /* =============== hero section ================== */
@@ -74,7 +89,7 @@ h1{
   padding: 12px 32px;
   border-radius: 28px;
   border: none;
-  background-color: orangered;
+  background-color: blue;
   margin-top: 30px;
   color: white;
   transition: 0.4s;
@@ -85,7 +100,7 @@ h1{
 }
 .button:hover{
   background-color: white;
-  color: orangered;
+  color: blue;
 }
 
   /* =============== news section ================== */
@@ -121,7 +136,7 @@ h2{
 .right-box h2{
   padding-left: 22px;
 }
-.left-box .news{
+.left-box .news, .news2{
   margin-top: 32px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -134,26 +149,29 @@ h2{
 h3{
   font-size: 18px;
   color: black;
+  font-weight: 600;
 }
-.news .child_one{
+.news .child_one, .news2 .child_one{
   box-shadow: 1px 1px 8px rgba(128, 128, 128, 0.304);
 }
-.news .child_one img{
+.news .child_one img, .news2 .child_one img{
   width: 100%;
+  height: 190px;
   object-fit: cover;
 }
-.news .child_one_text{
+.news .child_one_text, .news2 .child_one_text{
   padding: 22px;
 }
-.news .child_two{
+.news .child_two, .news2 .child_two{
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
-.news .child_two .card{
+.news .child_two .card, .news2 .child_two .card{
   display: flex;
   align-items: center;
   gap: 22px;
+  /* padding-right: 8px; */
    box-shadow: 1px 1px 8px rgba(128, 128, 128, 0.369);
 }
 .child_two .card img{
@@ -166,6 +184,7 @@ h3{
   font-weight: 600;
   margin-block: 0px;
   margin-bottom: 5px;
+  padding-right: 5px;
 }
 .child_two .card span{
   font-size: 12px;
@@ -205,4 +224,87 @@ h3{
   padding: 0;
   padding-right: 30px;
   margin: 0;
+}
+.right-box .news8{
+  margin-left: 22px;
+  margin-top: 25px;
+}
+.news8 img{
+  width: 100%;
+  object-fit: cover;
+  height: 160px;
+}
+
+/* ================ event section ======== */
+.event-section{
+  padding-block: 100px;
+}
+.event-section .container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  height: 190px;
+}
+.container .event{
+  text-align: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.603), rgba(0, 0, 0, 0.565)),url(../images/news6.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  padding: 22px;
+}
+.event h3{
+  color: white;
+  font-size: 16px;  
+  margin-block: 8px;
+}
+.event .event_type{
+  display: block;
+  width: fit-content;
+  background-color: white; 
+  color: black;
+  padding: 5px 8px;
+  margin-inline: auto;
+  font-size: 12px;
+  cursor: pointer;
+}
+/* =================FOOTER================== */
+footer{
+  background-color: black;
+  padding-block: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+footer ul{
+  display: flex;
+  gap: 22px;
+}
+footer .input-box{
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+footer .input-box input{
+  background: transparent;
+  color: white;
+  font-size: 15px;
+  border: none;
+  border-bottom: 1px solid white;
+  padding: 8px;
+  outline: none;
+}
+footer .input-box button{
+  padding: 12px 32px;
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 32px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+footer .input-box button:hover{
+  background-color: white;;
+  color: blue;
 }
