@@ -36,6 +36,7 @@ nav ul{
   display: flex;
   gap: 15px;
   justify-content: space-between;
+  transition: 0.4s;
 }
 ul a{
   color: white;
@@ -57,9 +58,11 @@ ul a:hover::before{
   width: 100%;
 }
 .nav-icon{
-  /* display: none; */
+  display: none;
   width: 30px;
   height: 30px;
+  background-color: white;
+  cursor: pointer;
 }
 .active{
   top: 100%;
@@ -386,13 +389,16 @@ footer .input-box button:hover{
   }
 }
 @media (width<=400px){
+  .hero-section{
+    height: auto;
+  }
   h1{
-    font-size: 26px;
+    font-size: 28px;
     width: 100%;
   }
   .hero_section p{
     width: 100%;
-    font-size: 14px;
+    font-size: 15px;
   }
   .logo{
     font-size: 22px;
