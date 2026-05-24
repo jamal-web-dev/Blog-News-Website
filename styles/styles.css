@@ -56,7 +56,14 @@ ul a::before{
 ul a:hover::before{
   width: 100%;
 }
-
+.nav-icon{
+  /* display: none; */
+  width: 30px;
+  height: 30px;
+}
+.active{
+  top: 100%;
+}
 /* =============== hero section ================== */
 .hero_section{
   height: 100vh;
@@ -67,9 +74,7 @@ ul a:hover::before{
   text-align: center;
   position: relative;
   margin-top: -100px;
-  /* z-index: -4; */
   padding-top: 190px;
-  border: solid black;
   color: white;
 }
 h1{
@@ -141,7 +146,6 @@ h2{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 32px;
-  
 }
 .left-box .trending_h2{
    margin-top: 40px;
@@ -176,8 +180,8 @@ h3{
 }
 .child_two .card img{
   width: 97px;
-  height: 97px;
-  object-fit: contain;
+  height: 100%;
+  object-fit: cover;
 }
 .child_two .card p{
   color: black;
@@ -243,7 +247,6 @@ h3{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
-  height: 190px;
 }
 .container .event{
   text-align: center;
@@ -253,6 +256,7 @@ h3{
   background-repeat: no-repeat;
   color: white;
   padding: 22px;
+  height: 190px;
 }
 .event h3{
   color: white;
@@ -307,4 +311,100 @@ footer .input-box button{
 footer .input-box button:hover{
   background-color: white;;
   color: blue;
+}
+
+/* ================ Responsiveness=========== */
+@media(width<= 1110px){
+  .news_container{
+    flex-direction: column;
+  }
+  .news_container .left-box, .news_container .right-box{
+    flex: 1;
+  }
+  h1{
+    font-size: 35px;
+  }
+  .hero_section p{
+    font-size: 16px;
+    width: 50%;
+
+  }
+}
+@media (width <= 890px) {
+  .logo{
+    font-size: 30px;
+  }
+  section, header, footer{
+    padding-inline: 5%;
+  }
+  .event-section .container{
+    grid-template-columns: repeat(2, 1fr);    
+  }
+}
+@media (width<=750px){
+  .event-section{
+    padding-block: 50px;
+  }
+  .event-section .container{
+    grid-template-columns: repeat(1, 1fr);    
+    align-items: center;
+  }
+  h1{
+    font-size: 28px;
+    width: 80%;
+  }
+  .hero_section p{
+    width: 80%;
+  }
+  .left-box .news, .news2{
+    grid-template-columns: repeat(1, 1fr);
+  }
+  footer ul{
+    display: none;
+  }
+
+  nav ul{
+    flex-direction : column;
+    background-color: black;
+    position: absolute;
+    top: -500px;
+    right: 0;
+    padding: 40px 32px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  .nav-icon{
+    display: block;
+  }
+  footer .input-box{
+    flex-direction: column;
+  }
+  footer .input-box button{
+    border-radius: 4px;
+    padding: 10px 24px;
+  }
+}
+@media (width<=400px){
+  h1{
+    font-size: 26px;
+    width: 100%;
+  }
+  .hero_section p{
+    width: 100%;
+    font-size: 14px;
+  }
+  .logo{
+    font-size: 22px;
+  }
+  .button{
+    padding: 10px 24px;
+    font-size: 14px;
+  }
+  h2{
+    font-size: 16px;
+  }
+  h3{
+    font-size: 14px;
+  }
 }
