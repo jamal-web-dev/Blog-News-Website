@@ -69,7 +69,7 @@ ul a:hover::before{
 }
 /* =============== hero section ================== */
 .hero_section{
-  height: 100vh;
+  /* height: 100vh; */
   background-image:linear-gradient(rgba(0, 0, 0, 0.601), rgba(0, 0, 0, 0.58)), url(../images/hero.jpg);
   background-position: center;
   background-size: cover;
@@ -78,6 +78,7 @@ ul a:hover::before{
   position: relative;
   margin-top: -100px;
   padding-top: 190px;
+  padding-bottom: 80px;
   color: white;
 }
 h1{
