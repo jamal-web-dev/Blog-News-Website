@@ -390,9 +390,6 @@ footer .input-box button:hover{
   }
 }
 @media (width<=400px){
-  .hero-section{
-    height: auto;
-  }
   h1{
     font-size: 28px;
     width: 100%;

@@ -1,0 +1,59 @@
+section{
+  padding-block: 80px;
+}
+section .form{
+  display: flex;
+  flex-direction:column;
+  gap: 20px;
+  width: 50%;
+  margin-inline: auto;
+  text-align: center;
+}
+.form input{
+  padding-block: 12px;
+  padding-inline: 20px;
+  width: 100%;
+  outline: none;
+  font-size: 17px;
+}
+button{
+  font-size: 17px;
+  padding-block: 12px;
+  padding-inline: 20px;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  transition: 0.4s;
+  border: none;
+}
+button:hover{
+  background-color: white;
+  color: black;
+  box-shadow: 0 0 4px rgb(192, 192, 192);
+}
+.email_box, .name_box{
+  display: flex;
+  /* flex: 1; */
+  gap: 15px;
+  max-width: 100%;
+}
+label{
+  font-size: 22px;
+  font-weight: 500;
+}
+p a{
+  color: blue;
+  cursor: pointer;
+}
+
+.signup_section{
+  display: none;
+}
+.active{
+  display: block;
+}
+@media (width<= 600px) {
+  section .form{
+    width: 100%;
+  }
+}

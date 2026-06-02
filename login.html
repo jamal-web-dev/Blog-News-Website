@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login | Login to your account</title>
   <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="styles/login.css">
 </head>
 <body>
   <header>
@@ -20,15 +21,33 @@
       </ul>
     </nav>
   </header>
+  <section class="login_section">
+    <!-- LOGIN FORM -->
+    <form class="login_container form">
+      <label for="name">Login</label>
+      <input type="email" placeholder="Your Email">
+      <input type="password" placeholder="Your Password">
+      <button type="submit">Login</button>
+      <p class="signup_link">Don't Have an Account? <a>Signup</a></p>
+    </form>
+  </section>
 
-  <!-- ======================
- 
- YOUR CODES HERE(DO NOT TOUCH OR EDDIT OTHER CODES BECAUSE OF MERGE CONFLICT)
- 
-==============================
--->
-
-
+  <section class="signup_section">
+   <!-- SIGNUP FORM -->
+    <form class="signup_container form">
+      <label for="name">Input Author's Details to Signup</label>
+      <div class="name_box">
+        <input type="text" placeholder="First Name">
+        <input type="text" placeholder="Last Name">
+      </div>
+      <div class="email_box">
+        <input type="email" placeholder="Email">
+        <input type="password" placeholder="Password">
+      </div>
+      <button type="submit">Submit</button>
+      <p class="login_link">Already Have an Account? <a>Login</a></p>
+    </form>
+  </section>
 
   <footer>
     <span class="logo">
@@ -44,5 +63,7 @@
       <button type="submit">Subscribe</button>
     </div>
   </footer>
+
+  <script src="src/login.js"></script>
 </body>
 </html>
