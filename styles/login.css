@@ -49,8 +49,9 @@ p a{
 .signup_section{
   display: none;
 }
+
 .active{
-  display: block;
+  top: 100%;
 }
 @media (width<= 600px) {
   section .form{
