@@ -1,0 +1,38 @@
+section{
+  padding-block: 80px;
+}
+h2{
+  font-size: 28px;
+  margin-top: 22px;
+}
+.post-title{
+  padding: 22px ;
+  box-shadow: 0 0 4px rgb(129, 129, 129);
+  margin-bottom: 22px;
+}
+.post-details{
+  margin-top: 22px;
+  box-shadow: 0 0 4px rgb(129, 129, 129);
+  padding: 22px;
+}
+p{
+  font-size: 16px;
+}
+img {
+  height: 240px;
+  width: 100%;
+  object-fit: cover ;
+}
+button{
+  display: block;
+  margin-inline: auto;
+  padding: 12px 32px;
+  background-color: black;
+  color: white;
+  border: none;
+  font-size: 16px;
+  margin-top: 22px;
+}
+.active{
+  top: 100%;
+}
