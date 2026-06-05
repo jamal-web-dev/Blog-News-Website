@@ -8,6 +8,30 @@
   <link rel="stylesheet" href="styles/styles.css">
   <link rel="stylesheet" href="styles/category.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Category page - specific responsive overrides to fix mobile layout after merge */
+    @media (max-width: 768px) {
+      header nav { display: none !important; }
+      .layout { flex-direction: column; }
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 260px;
+        transform: translateX(-100%);
+      }
+      .sidebar.open { transform: translateX(0); }
+      .content { padding: 100px 20px; }
+      footer { flex-direction: column; gap: 12px; align-items: stretch; }
+      .menu-btn { display: block; }
+    }
+    @media (max-width: 500px) {
+      .content { padding: 90px 12px; }
+      h1 { font-size: 28px; }
+      .posts-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 
 <body>
