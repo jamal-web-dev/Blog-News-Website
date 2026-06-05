@@ -1,0 +1,39 @@
+[
+{
+"id":1,
+"title":"Tech Is Transforming Media",
+"summary":"Modern platforms continue changing journalism and publishing.",
+
+"category":"technology",
+
+"image":"",
+
+"date":"2026-05-23"
+},
+
+{
+"id":2,
+"title":"Business Growth Outlook",
+
+"summary":"Markets continue showing optimism across sectors.",
+
+"category":"business",
+
+"image":"",
+
+"date":"2026-05-24"
+},
+
+{
+"id":3,
+"title":"Luxury Travel Trends",
+
+"summary":"Premium travel experiences continue evolving globally.",
+
+"category":"travel",
+
+"image":"",
+
+"date":"2026-05-25"
+}
+]
