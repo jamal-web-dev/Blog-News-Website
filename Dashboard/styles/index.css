@@ -48,6 +48,10 @@ body{
   flex-direction: column;
   gap: 32px;
 }
+.side-bar a{
+  text-decoration: none;
+  color: white;
+}
 .side-bar li{
   padding: 12px 20px;
   background-color: rgba(176, 176, 176, 0.507);
@@ -60,9 +64,14 @@ body{
     text-decoration: none;
   }
 }
-.side-bar li:hover{
-  background-color: blue;
-  transform: translateX(-10px);
+.side-bar a:hover{
+  li{
+    background-color: blue;
+    transform: translateX(-10px);
+  }
+  a{
+    color: white;
+  }
 }
 .side-bar li.active{
   transform: translateX(-10px);
