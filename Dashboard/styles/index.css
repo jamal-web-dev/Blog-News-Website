@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  list-style: none;
+}
+.logo{
+  font-weight: 800;
+  font-size: 20px;
+  color: white;
+  span{
+    color: blue;
+  }
+}
+body{
+  position: relative;
+}
+.header{
+  background-color: black;
+  padding: 22px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 250px;
+  right: 0;
+}
+.header a{
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+.side-bar{
+  width: 250px;
+  background-color: black;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  padding-top: 75px;
+  padding-inline: 32px 15px;
+}
+.side-bar ul{
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.side-bar li{
+  padding: 12px 20px;
+  background-color: rgba(176, 176, 176, 0.507);
+  cursor: pointer;
+  transition: 0.4s;
+
+  a{
+    color: white;
+    font-size: 17px;
+    text-decoration: none;
+  }
+}
+.side-bar li:hover{
+  background-color: blue;
+  transform: translateX(-10px);
+}
+.side-bar li.active{
+  transform: translateX(-10px);
+    background-color: blue;
+}
+section{
+  position: absolute;
+  top: 75px;
+  left: 250px;
+  right: 0;
+  z-index: -1;
+  padding: 32px;
+}
+.overview_container{
+  display: flex;
+  gap: 32px;
+  box-shadow: 0 0 8px rgba(128, 128, 128, 0.66);
+  padding: 20px;
+}
+.overview_container .box{
+  flex: 1;
+  height: 200px;
+  text-align: center;
+  padding-top: 50px;
+  border-radius: 4px;
+  color: white;
+
+  p{
+    margin-top: 15px;
+  }
+}
+.total_post{
+  background-color: orangered;
+}
+.total_category{
+  background-color: rgba(0, 0, 0, 0.932);
+}
+.total_author{
+  background-color: blue;
+}
+.activity-heading{
+  margin-top: 40px;
+}
+.recent_activity{
+  box-shadow: 0 0 8px rgba(128, 128, 128, 0.66);
+  padding: 20px;
+  /* padding-top: 0; */
+  margin-block: 15px;
+}
+.recent_activity .title{
+  font-size: 17px;
+  font-weight: 500;
+  display: block;
+  border-bottom: 2px solid rgb(87, 87, 87);
+  width: fit-content;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.recent_activity ul {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+.recent_activity li{
+  padding: 12px;
+  background-color: rgba(128, 128, 128, 0.113);
+  font-weight: 500;
+  transition: 0.4s;
+  cursor: pointer;
+}
+.recent_activity li:hover{
+  transform: translateY(-4px)
+}
