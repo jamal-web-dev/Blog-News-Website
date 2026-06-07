@@ -1,0 +1,20 @@
+.post-activity li, .manage-box{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.post-activity li{
+  cursor: auto;
+}
+
+.manage-box .edit{
+  color: green;
+  font-weight: 600;
+  cursor: pointer;
+}
+.manage-box .delete{
+  color: red;
+  font-weight: 600;
+  cursor: pointer;
+}
