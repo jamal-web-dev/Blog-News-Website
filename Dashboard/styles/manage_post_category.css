@@ -18,3 +18,10 @@
   font-weight: 600;
   cursor: pointer;
 }
+@media (width <= 400px){
+  .post-activity li{
+    flex-direction: column;
+    justify-content: left;
+    align-items: flex-start;
+  }
+}
