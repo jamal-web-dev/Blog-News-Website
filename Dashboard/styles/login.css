@@ -1,63 +1,161 @@
-body{
-  background-color: gray;
-}
-section{
-  padding-block: 80px;
-}
-section .form{
-  display: flex;
-  flex-direction:column;
-  gap: 20px;
-  width: 50%;
-  margin-inline: auto;
-  text-align: center;
-}
-.form input{
-  padding-block: 12px;
-  padding-inline: 20px;
-  width: 100%;
-  outline: none;
-  font-size: 17px;
-}
-button{
-  font-size: 17px;
-  padding-block: 12px;
-  padding-inline: 20px;
-  cursor: pointer;
-  background-color: black;
-  color: white;
-  transition: 0.4s;
-  border: none;
-}
-button:hover{
-  background-color: white;
-  color: black;
-  box-shadow: 0 0 4px rgb(192, 192, 192);
-}
-.email_box, .name_box{
-  display: flex;
-  /* flex: 1; */
-  gap: 15px;
-  max-width: 100%;
-}
-label{
-  font-size: 22px;
-  font-weight: 500;
-}
-p a{
-  color: blue;
-  cursor: pointer;
+/* LOGIN / SIGNUP PAGE STYLES */
+
+:root {
+  --bg-color: #080c14;
+  --bg-gradient: radial-gradient(circle at 50% 0%, #171c35 0%, #080c14 70%);
+  --panel-bg: rgba(17, 24, 39, 0.65);
+  --panel-border: rgba(255, 255, 255, 0.08);
+  --panel-border-hover: rgba(255, 255, 255, 0.16);
+  
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  
+  --accent-color: #6366f1;
+  --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  --accent-glow: rgba(99, 102, 241, 0.35);
+  
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.signup_section{
+body {
+  background-color: var(--bg-color);
+  background-image: var(--bg-gradient);
+  color: var(--text-primary);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 20px;
+}
+
+section {
+  width: 100%;
+  max-width: 740px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section .form {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  padding: 40px;
+  border-radius: 24px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  text-align: center;
+  transition: var(--transition-smooth);
+}
+
+section .form:hover {
+  border-color: var(--panel-border-hover);
+}
+
+label {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+  background: linear-gradient(180deg, #ffffff 40%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: block;
+}
+
+.form input {
+  padding: 12px 18px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-primary);
+  border: 1px solid var(--panel-border);
+  border-radius: 10px;
+  outline: none;
+  font-size: 15px;
+  transition: var(--transition-smooth);
+  width: 100%;
+}
+
+.form input::placeholder {
+  color: var(--text-muted);
+}
+
+.form input:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+button {
+  font-size: 15px;
+  font-weight: 600;
+  padding: 12px 20px;
+  cursor: pointer;
+  background: var(--accent-gradient);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 15px var(--accent-glow);
+  width: 100%;
+  margin-top: 10px;
+}
+
+button:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px var(--accent-glow);
+}
+
+.email_box, .name_box {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.email_box input, .name_box input {
+  flex: 1;
+}
+
+p {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  margin-top: 10px;
+}
+
+p a {
+  color: var(--accent-color);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+p a:hover {
+  text-shadow: 0 0 8px var(--accent-glow);
+  text-decoration: underline;
+}
+
+.signup_section {
   display: none;
 }
 
-.active{
+.active {
   top: 100%;
 }
-@media (width<= 600px) {
-  section .form{
-    width: 100%;
+
+@media (max-width: 480px) {
+  section .form {
+    padding: 30px 20px;
+  }
+  .email_box, .name_box {
+    flex-direction: column;
+    gap: 20px;
   }
 }

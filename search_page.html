@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Search Page | Search For Any News</title>
   <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="styles/category.css">
 </head>
 <body>
   <header>
@@ -21,12 +22,18 @@
     </nav>
   </header>
 
-  <!-- ======================
- 
- YOUR CODES HERE(DO NOT TOUCH OR EDDIT OTHER CODES BECAUSE OF MERGE CONFLICT)
- 
-==============================
--->
+  <section class="search-container" style="padding-block: 60px 80px; max-width: 1000px; margin-inline: auto; min-height: 70vh; padding-inline: 20px;">
+    <h1 style="font-size: 38px; font-weight: 800; margin-bottom: 24px; text-align: center; background: linear-gradient(180deg, #ffffff 40%, #cbd5e1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Search Articles</h1>
+    <div class="search-box" style="display: flex; gap: 12px; max-width: 600px; margin-inline: auto; margin-bottom: 48px;">
+      <input type="text" id="searchInput" placeholder="Enter keywords, tags, or categories..." style="flex: 1; padding: 12px 18px; border-radius: 10px; border: 1px solid var(--panel-border); background: rgba(255,255,255,0.03); color: white; outline: none; font-size: 15px; transition: var(--transition-smooth);">
+      <button id="searchBtn" style="padding: 12px 28px; background: var(--accent-gradient); color: white; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 12px var(--accent-glow); transition: var(--transition-smooth);">Search</button>
+    </div>
+    <div class="posts-grid" id="searchResults">
+      <div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding-block: 40px;">
+        <h3>Enter a query to search articles.</h3>
+      </div>
+    </div>
+  </section>
 
 
 
@@ -37,12 +44,86 @@
     <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="category.html">Category</a></li>
-        <li><a href="login.html">Login</a></li>
+        <li><a href="Dashboard/login.html">Login</a></li>
     </ul>
     <div class="input-box">
       <input type="text" placeholder="Email">
       <button type="submit">Subscribe</button>
     </div>
   </footer>
+  <script src="src/db.js"></script>
+  <script src="src/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const searchInput = document.getElementById("searchInput");
+      const searchBtn = document.getElementById("searchBtn");
+      const searchResults = document.getElementById("searchResults");
+
+      function doSearch() {
+        const query = searchInput.value.trim().toLowerCase();
+        if (!query) {
+          searchResults.innerHTML = `
+            <div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding-block: 40px;">
+              <h3>Please enter a search query.</h3>
+            </div>
+          `;
+          return;
+        }
+
+        if (!window.DB) return;
+
+        const posts = window.DB.getPosts().filter(p => p.status === "published" || !p.status);
+        const filtered = posts.filter(p => 
+          p.title.toLowerCase().includes(query) || 
+          p.summary.toLowerCase().includes(query) || 
+          (p.content && p.content.toLowerCase().includes(query)) ||
+          (p.tags && p.tags.some(t => t.toLowerCase().includes(query))) ||
+          (p.category && p.category.toLowerCase().includes(query))
+        );
+
+        searchResults.innerHTML = "";
+
+        if (filtered.length === 0) {
+          searchResults.innerHTML = `
+            <div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding-block: 40px;">
+              <h3>No articles match your search criteria.</h3>
+            </div>
+          `;
+          return;
+        }
+
+        filtered.forEach(post => {
+          const summaryText = post.summary || (post.content ? post.content.substring(0, 100) + "..." : "");
+          searchResults.innerHTML += `
+            <div class="card">
+              <a href="post_details.html?id=${post.id}" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; height: 100%;">
+                <img src="${post.image || 'https://picsum.photos/600/400'}" alt="${post.title}">
+                <div class="card-body">
+                  <div class="date">${post.date || 'Sep 29, 2017'}</div>
+                  <div class="title">${post.title}</div>
+                  <div class="summary">${summaryText}</div>
+                </div>
+              </a>
+            </div>
+          `;
+        });
+      }
+
+      if (searchBtn && searchInput) {
+        searchBtn.addEventListener("click", doSearch);
+        searchInput.addEventListener("keypress", (e) => {
+          if (e.key === "Enter") doSearch();
+        });
+      }
+
+      // Check query parameter on load
+      const urlParams = new URLSearchParams(window.location.search);
+      const qParam = urlParams.get('q');
+      if (qParam && searchInput) {
+        searchInput.value = qParam;
+        setTimeout(doSearch, 100);
+      }
+    });
+  </script>
 </body>
 </html>

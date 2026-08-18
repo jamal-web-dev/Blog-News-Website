@@ -7,17 +7,26 @@ categoryForm.addEventListener("submit", function (e) {
   const slug = document.getElementById("categorySlug").value.trim();
   const description = document.getElementById("categoryDescription").value.trim();
 
+  if (!window.DB) {
+    alert("Database manager not found!");
+    return;
+  }
+
   const newCategory = {
-    id: Date.now(),
+    id: name.toLowerCase().replace(/\s+/g, '-'),
     name,
     slug,
     description
   };
 
-  console.log("New Category Added:", newCategory);
+  window.DB.saveCategory(newCategory);
+  console.log("New Category Added to Storage:", newCategory);
 
-  // clear form
+  // Clear form
   categoryForm.reset();
 
   alert("Category added successfully!");
+  
+  // Redirect to manage categories page
+  window.location.href = "manage_category.html";
 });

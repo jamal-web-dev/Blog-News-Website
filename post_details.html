@@ -11,13 +11,13 @@
   <header></header>
   <section>
     <div class="post-title">
-      <img src="images/news1.png" alt="">
-      <h2>How Did van Gogh’s Turbulent Mind Depict One of the Most</h2>
+      <img id="postImg" src="images/news1.png" alt="">
+      <h2 id="postHeader">How Did van Gogh’s Turbulent Mind Depict One of the Most</h2>
     </div>
     <div class="post-details">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat ad obcaecati ipsum unde aliquam beatae possimus, voluptatibus autem repellat aperiam ut maiores, rerum repellendus alias placeat consequatur aliquid quos voluptatem dolorem fugiat accusantium nobis quod quae! Impedit eaque tenetur labore. Vitae expedita aliquam, sit ex voluptatem quae consectetur perspiciatis impedit incidunt at, molestiae nostrum, obcaecati excepturi adipisci officiis nam aliquid debitis. Magnam laudantium esse ipsum impedit eius enim alias nobis neque veritatis temporibus qui, perspiciatis consequuntur, distinctio a quaerat repellat reprehenderit. Nisi ipsam culpa beatae fugit reiciendis temporibus dolorum, magnam eius impedit ab et sapiente quam consequuntur voluptatum esse inventore, deserunt fuga. Facilis eaque harum, eos tempore, possimus doloremque enim, quae deleniti eveniet beatae suscipit. Mollitia eos iusto, voluptate nisi, est neque aliquid odio natus similique quod, voluptatum velit inventore quaerat unde dicta quis amet sapiente corrupti? Blanditiis, recusandae earum soluta facere minus quibusdam vel nihil quae non reiciendis magnam eligendi molestias et laboriosam! Ad quidem, quasi inventore culpa aliquam odit beatae eius. Quas ullam enim dolorem neque facilis vel hic. Beatae, reiciendis exercitationem aperiam fugit esse velit blanditiis dolorem perferendis libero facilis quae nostrum tempora quis aliquam totam odio quidem maiores, assumenda minima numquam corporis ea maxime hic. Accusamus dolorum, id soluta atque reiciendis nesciunt corporis debitis itaque praesentium culpa libero distinctio veritatis cumque iure incidunt deserunt cupiditate illum! Expedita alias assumenda ipsam illum rem molestiae nemo, qui minima tempora, optio error incidunt possimus dignissimos repellendus laborum ipsa dolore quam? Ea et atque non, assumenda doloribus consequatur modi tenetur. Nostrum sed provident ducimus minima repellat, voluptatibus, in commodi suscipit facere modi repudiandae magnam, perspiciatis possimus autem iure ea voluptate culpa nemo ad blanditiis? Dolore quo ipsam aliquid maiores sunt debitis, quaerat reiciendis dicta enim reprehenderit facere alias omnis atque minima delectus ducimus odit dolor suscipit ex voluptates culpa eaque. Mollitia atque modi, odit perspiciatis corrupti nisi facere fugit itaque nemo commodi reprehenderit iure impedit qui labore suscipit incidunt eaque nobis autem distinctio ab quidem beatae possimus? Sint aliquid ducimus suscipit voluptate distinctio quisquam debitis atque repellendus excepturi accusantium explicabo enim similique id consectetur molestias veritatis a incidunt officia, voluptas perspiciatis. Aut beatae eligendi optio laudantium molestias? Aperiam asperiores quis a natus ut delectus fugit labore maxime corporis enim nobis, dicta praesentium nulla aspernatur voluptatem itaque perspiciatis tempora eos unde nesciunt sunt! Possimus pariatur aliquam eligendi soluta ipsa, id assumenda quisquam ducimus et at aperiam eius suscipit, nisi iusto sit.</p>
+      <p id="postBody">Loading post contents...</p>
     </div>
-    <button>Back To Home</button>
+    <button id="backBtn">Back To Home</button>
   </section>
 
 
@@ -28,7 +28,7 @@
     <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="category.html">Category</a></li>
-        <li><a href="login.html">Login</a></li>
+        <li><a href="Dashboard/login.html">Login</a></li>
     </ul>
     <div class="input-box">
       <input type="text" placeholder="Email">
@@ -36,6 +36,37 @@
     </div>
   </footer>
 
+  <script src="src/db.js"></script>
   <script src="src/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const img = document.getElementById("postImg");
+      const header = document.getElementById("postHeader");
+      const body = document.getElementById("postBody");
+      const backBtn = document.getElementById("backBtn");
+
+      if (backBtn) {
+        backBtn.addEventListener("click", () => {
+          window.location.href = "index.html";
+        });
+      }
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const id = urlParams.get('id');
+
+      if (id && window.DB) {
+        const post = window.DB.getPostById(id);
+        if (post) {
+          if (img) img.src = post.image || "https://picsum.photos/600/400";
+          if (header) header.textContent = post.title;
+          if (body) body.innerHTML = post.content ? post.content.replace(/\n/g, "<br><br>") : "No content available.";
+        } else {
+          if (body) body.textContent = "Error: Article not found.";
+        }
+      } else {
+        if (body) body.textContent = "Error: Invalid post selection.";
+      }
+    });
+  </script>
 </body>
 </html>
